@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import MeetingModal from "@/components/MeetingModal";
 import LoaderUI from "@/components/LoaderUI";
 import { Loader2Icon } from "lucide-react";
-// import MeetingCard from "@/components/MeetingCard";
+import MeetingCard from "@/components/MeetingCard";
 
 export default function Home() {
   const router = useRouter();
@@ -54,13 +54,13 @@ export default function Home() {
       {isInterviewer ? (
         <>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             {QUICK_ACTIONS.map((action) => (
+            {QUICK_ACTIONS.map((action) => (
               <ActionCard
                 key={action.title}
                 action={action}
                 onClick={() => handleQuickAction(action.title)}
               />
-            ))} 
+            ))}
           </div>
 
           <MeetingModal
@@ -85,8 +85,7 @@ export default function Home() {
             ) : interviews.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {interviews.map((interview) => (
-                  <div key={interview._id}></div>
-                  // <MeetingCard key={interview._id} interview={interview} />
+                  <MeetingCard key={interview._id} interview={interview} />
                 ))}
               </div>
             ) : (
